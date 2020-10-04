@@ -1,4 +1,4 @@
-##Toy URL Shortener: Architecture and Control Flow
+#Toy URL Shortener: Architecture and Control Flow
 ![Architecture](architecture.jpg)
 + MongoDb runs in a docker container with exposed port 27017.
 + In tests I use *testcontainer* to run MongoDb.
@@ -11,19 +11,13 @@ and is being written through to database right away.
 If the value has been cleared from the cache, I retrieve it from the database and store it the cache.
  
 
-##Execution Instructions
-
-+ docker run --name my-mongo1 -d -v /tmp/mongodb:/data/db -p 27017:27017 hello-mongo
-+ or restart already existing mongo-db docker
-+ go run main.go
-+Run http://localhost:8090/shorten?url=ynet.co.il
-+Run http://localhost:8090/redirect?hash=eW5ldC5jby5pbA== (I did not manage to actually perform http redirect).
-       
+#Execution Instructions       
 
 ##Setup
-Create  and start a MongoDB docker container and then run main.
+1. Create  and start a MongoDB docker container.
+2. Run main.go.
 
-###Creating a MongoDB Docker Container Step By Step 
+##Creating a MongoDB Docker Container Step By Step 
 + Create docker file:
 ```
 FROM debian:jessie-slim
@@ -59,9 +53,15 @@ show collections
 db.urlhash.find()
 ```
 
-##Using Test Containers in GoLang
-[Tutorial](https://github.com/testcontainers/testcontainers-go)
+##Run the Docker Container and Main
++ docker run --name my-mongo1 -d -v /tmp/mongodb:/data/db -p 27017:27017 hello-mongo
++ or restart already existing mongo-db docker
++ go run main.go
++Run http://localhost:8090/shorten?url=ynet.co.il
++Run http://localhost:8090/redirect?hash=eW5ldC5jby5pbA== (I did not manage to actually perform http redirect).
 
-##How to Convert the ID to a Shortened URL
+#Various 
+[Test Containers in GoLang Tutorial](https://github.com/testcontainers/testcontainers-go)
+
 [Overview of methods to shortening an URL](https://stackoverflow.com/questions/742013/how-do-i-create-a-url-shortener)
 
