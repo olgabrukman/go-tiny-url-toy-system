@@ -1,7 +1,5 @@
 ##Toy URL Shortener: Architecture and Control Flow
-
 ![Architecture](architecture.jpg)
-
 + MongoDb runs in a docker container with exposed port 27017.
 + In tests I use *testcontainer* to run MongoDb.
 
